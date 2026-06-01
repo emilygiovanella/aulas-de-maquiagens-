@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Aulas de Maquiagem | Beauty Class</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fffaf7;
+            color: #2d2a2a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c1810 0%, #3e2723 100%);
+            color: #f9e0c7;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #f4c2a2;
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #f9e0c7;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #f4c2a2;
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(120deg, #fdeadf 0%, #fff4ed 100%);
+            padding: 70px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            color: #2c1810;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #4a3b35;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #b45f3b;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #8e4a2c;
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #b45f3b;
+            color: #b45f3b;
+        }
+
+        .btn-outline:hover {
+            background: #b45f3b;
+            color: white;
+        }
+
+        /* Seções */
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: #2c1810;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: #f0b27a;
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+
+        /* Cards de cursos */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid #ffe2d0;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 40px rgba(0,0,0,0.1);
+        }
+
+        .course-icon {
+            font-size: 3rem;
+            color: #b45f3b;
+            margin-bottom: 20px;
+        }
+
+        .course-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .course-card p {
+            color: #5e4b40;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #2c1810;
+            margin-bottom: 20px;
+        }
+
+        /* Sobre */
+        .about-flex {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+            color: #3e2c24;
+        }
+
+        .about-img {
+            flex: 1;
+            background: #fae1d0;
+            border-radius: 32px;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 5rem;
+            color: #b45f3b;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Depoimentos */
+        .testimonials {
+            background: #fef5ef;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .test-card {
+            background: white;
+            padding: 28px;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #ffede2;
+        }
+
+        .test-card i {
+            color: #e0a878;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .test-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #2d2a2a;
+        }
+
+        .student {
+            font-weight: 700;
+            color: #b45f3b;
+        }
+
+        /* Formulário de contato / agendamento */
+        .contact-form {
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.05);
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            border: 1px solid #ffddd0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c1810;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e2cfc2;
+            border-radius: 28px;
+            font-family: 'Inter', sans-serif;
+            background-color: #fffcf9;
+            transition: 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #b45f3b;
+            box-shadow: 0 0 0 3px rgba(180, 95, 59, 0.2);
+        }
+
+        textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1da851;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f140f;
+            color: #e7cfbf;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 30px;
+        }
+
+        .social-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social-links a {
+            color: #e7cfbf;
+            font-size: 1.6rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #f0b27a;
+            transform: translateY(-3px);
+        }
+
+        /* responsivo */
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .contact-form {
+                padding: 24px;
+            }
+        }
+
+        .btn-wa-small {
+            background: #25D366;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            color: #b45f3b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="logo">Beauty <span>Class</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#cursos">Cursos</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#agendar">Agendar</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Aulas de Maquiagem <br> Profissionais</h1>
+            <p>Aprenda técnicas incríveis com uma maquiadora experiente. Do básico ao avançado, em aulas práticas e personalizadas.</p>
+            <a href="#agendar" class="btn">Quero me inscrever <i class="fas fa-arrow-right"></i></a>
+            <a href="#cursos" class="btn btn-outline" style="margin-left: 16px;">Ver cursos</a>
+        </div>
+    </section>
+
+    <!-- Cursos / Tipos de aula -->
+    <section id="cursos">
+        <div class="container">
+            <h2 class="section-title">Nossos cursos</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-brush"></i></div>
+                    <h3>Makeup Básico</h3>
+                    <p>Ideal para iniciantes: base, corretivo, contorno simples e técnicas para o dia a dia.</p>
+                    <div class="price">4 aulas - R$ 297</div>
+                    <a href="#agendar" class="btn btn-wa-small"><i class="fab fa-whatsapp"></i> Agendar</a>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-star"></i></div>
+                    <h3>Make Avançado</h3>
+                    <p>Cut crease, pele iluminada, técnicas de contorno profissional e finalização impecável.</p>
+                    <div class="price">6 aulas - R$ 497</div>
+                    <a href="#agendar" class="btn btn-wa-small"><i class="fab fa-whatsapp"></i> Agendar</a>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Make para Festas</h3>
+                    <p>Maquiagem para casamentos, formaturas e eventos. Aprenda brilho, resistência e sofisticação.</p>
+                    <div class="price">3 aulas - R$ 347</div>
+                    <a href="#agendar" class="btn btn-wa-small"><i class="fab fa-whatsapp"></i> Agendar</a>
+                </div>
+                <div class="course-card">
+                    <div class="course-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Make Artístico</h3>
+                    <p>Cores, efeitos especiais e maquiagem criativa para portfólio ou transformações.</p>
+                    <div class="price">5 aulas - R$ 547</div>
+                    <a href="#agendar" class="btn btn-wa-small"><i class="fab fa-whatsapp"></i> Agendar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a instrutora -->
+    <section id="sobre">
+        <div class="container about-flex">
+            <div class="about-text">
+                <h3>Quem vai te ensinar?</h3>
+                <p><span class="highlight">Camila Vianna</span> — maquiadora profissional há 8 anos, com certificações no Brasil e exterior. Atendeu mais de 500 clientes e formou mais de 200 alunas.</p>
+                <p>Minhas aulas são 100% práticas, com material incluso e suporte online. Cada aluna recebe um kit inicial de pincéis e dicas exclusivas para montar seu próprio estojo.</p>
+                <p><i class="fas fa-check-circle" style="color:#b45f3b;"></i> Certificado de conclusão <br>
+                <i class="fas fa-check-circle" style="color:#b45f3b;"></i> Aulas individuais ou em dupla <br>
+                <i class="fas fa-check-circle" style="color:#b45f3b;"></i> Horários flexíveis</p>
+                <a href="#agendar" class="btn" style="margin-top: 20px;">Garantir minha vaga</a>
+            </div>
+            <div class="about-img">
+                <i class="fas fa-lipstick"></i> <i class="fas fa-eye-shadow"></i><br>
+                ✨ Profissional ✨
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Quem já fez a aula</h2>
+            <div class="test-grid">
+                <div class="test-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>“Aprendi em 4 aulas o que não consegui em meses vendo vídeos. Camila é muito didática e paciente. Minha autoestima mudou!”</p>
+                    <div class="student">— Mariana S.</div>
+                </div>
+                <div class="test-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>“Curso avançado sensacional! Agora faço makes para noivas e já estou cobrando pelos serviços. Melhor investimento.”</p>
+                    <div class="student">— Jéssica L.</div>
+                </div>
+                <div class="test-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>“Adorei a flexibilidade de horários e o suporte pelo WhatsApp. A Camila responde todas as dúvidas mesmo após o curso.”</p>
+                    <div class="student">— Rafaela C.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário + Agendamento via WhatsApp -->
+    <section id="agendar">
+        <div class="container">
+            <h2 class="section-title">Agende sua aula experimental</h2>
+            <div class="contact-form">
+                <p style="text-align: center; margin-bottom: 20px;">Preencha os dados e entraremos em contato para confirmar horário, ou já agende direto pelo WhatsApp.</p>
+                <form id="formAgendamento">
+                    <div class="form-group">
+                        <label>Nome completo *</label>
+                        <input type="text" id="nome" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label>WhatsApp com DDD *</label>
+                        <input type="tel" id="whatsapp" placeholder="(11) 98765-4321" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Curso de interesse</label>
+                        <select id="curso">
+                            <option value="Makeup Básico">Makeup Básico</option>
+                            <option value="Makeup Avançado">Makeup Avançado</option>
+                            <option value="Makeup para Festas">Makeup para Festas</option>
+                            <option value="Makeup Artístico">Makeup Artístico</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferência de horário (opcional)</label>
+                        <input type="text" placeholder="Ex: manhã, tarde ou noite">
+                    </div>
+                    <button type="button" id="btnWhatsApp" class="btn whatsapp-btn"><i class="fab fa-whatsapp"></i> Agendar agora via WhatsApp</button>
+                </form>
+                <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">🔒 Seus dados são seguros. Respondemos em até 1 hora.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="logo" style="font-size: 1.6rem; margin-bottom: 12px;">Beauty Class</div>
+        <p>📍 Aulas presenciais em São Paulo - SP e online para todo Brasil</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p>© 2025 Beauty Class — Transformando vidas através da maquiagem</p>
+    </div>
+</footer>
+
+<script>
+    // Função para enviar os dados via WhatsApp com a mensagem personalizada
+    document.getElementById('btnWhatsApp').addEventListener('click', function() {
+        const nome = document.getElementById('nome').value.trim();
+        const whatsapp = document.getElementById('whatsapp').value.trim();
+        const curso = document.getElementById('curso').value;
+
+        if (nome === "" || whatsapp === "") {
+            alert("Por favor, preencha seu nome e WhatsApp para agendarmos sua aula!");
+            return;
+        }
+
+        // Número real da maquiadora (coloque o número com DDD, sem espaços)
+        const numeroInstrutora = "5511999999999"; // 👈 SUBSTITUA PELO SEU NÚMERO REAL AQUI (formato 55+DDD+numero)
+
+        // Montar a mensagem
+        let mensagem = `Olá! Gostaria de agendar uma aula de maquiagem.%0A`;
+        mensagem += `*Nome:* ${nome}%0A`;
+        mensagem += `*WhatsApp:* ${whatsapp}%0A`;
+        mensagem += `*Curso de interesse:* ${curso}%0A`;
+        mensagem += `*Pedido via:* Site Beauty Class`;
+
+        const linkWhats = `https://wa.me/${numeroInstrutora}?text=${mensagem}`;
+        window.open(linkWhats, '_blank');
+    });
+
+    // Scroll suave nos links do menu
+    document.querySelectorAll('.nav-links a, .btn[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const hash = this.getAttribute('href');
+            if (hash && hash.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
